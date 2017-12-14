@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="formEdicao">
+        <h:panelGroup rendered="#{controleCidade.editando}">
+            <div class="ui-fluid">
+                <p:messages/>
+                <p:panelGrid columns="2"
+                             columnClasses="ui-grid-col-2, ui-grid-col-13"
+                             layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:outputLabel value="Edição de Cidades"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                             actionListener="#{controleCidade.salvar()}"
+                                             update="formEdicao :formListagem"
+                                             process="@form"/>
+                        </div>
+                    </f:facet>
+                    <p:outputLabel value="ID"/>
+                    <p:inputText value="#{controleCidade.objeto.id}" size="5" readonly="true"/>
+                    <p:outputLabel value="Nome" for="txtNome"/>
+                    <p:inputText value="#{controleCidade.objeto.nome}"  size="50" maxlength="50"
+                                 id="txtNome" placeholder="Obrigatório"/>
+                    <p:outputLabel value="Estado" for="selectEstado"/>
+                    <p:selectOneMenu id="selectEstado" value="#{controleCidade.objeto.estado}">
+                        <f:converter converterId="converterEstado"/>
+                        <f:selectItem noSelectionOption="true"
+                                      itemLabel="Selecione um registro"/>
+                        <f:selectItems value="#{controleCidade.daoEstado.listaObjetos}"
+                                       var="e" itemLabel="#{e.nome}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </div>
+        </h:panelGroup>
+    </h:form>
+</html>
+

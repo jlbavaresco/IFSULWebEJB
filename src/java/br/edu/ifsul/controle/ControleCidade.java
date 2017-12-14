@@ -6,6 +6,7 @@ import br.edu.ifsul.modelo.Cidade;
 import br.edu.ifsul.modelo.Estado;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -19,9 +20,11 @@ import javax.inject.Named;
 @ViewScoped
 public class ControleCidade implements Serializable {
 
+    @EJB
     private CidadeDAO<Cidade> dao;
     private Cidade objeto;
     private Boolean editando;
+    @EJB
     private EstadoDAO<Estado> daoEstado;
     
     public ControleCidade(){
@@ -49,8 +52,7 @@ public class ControleCidade implements Serializable {
     public void remover(Integer id){
         try {
             objeto = dao.getObjectById(id);
-            dao.remover(objeto);
-            editando = true;
+            dao.remover(objeto);            
         } catch(Exception e){
             Util.mensagemErro("Erro ao remover objeto: " + Util.getMensagemErro(e));
         }
@@ -63,6 +65,7 @@ public class ControleCidade implements Serializable {
             } else {
                 dao.merge(objeto);
             }
+            editando = false;
         } catch (Exception e){
             Util.mensagemErro("Erro ao persistir objeto: " + Util.getMensagemErro(e));
         }
