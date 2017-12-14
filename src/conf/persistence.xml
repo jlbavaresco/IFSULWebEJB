@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="IFSULWebEJBPU" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>jdbc/ifsul</jta-data-source>
+    <class>br.edu.ifsul.modelo.Arquivo</class>
+    <class>br.edu.ifsul.modelo.Categoria</class>
+    <class>br.edu.ifsul.modelo.Cidade</class>
+    <class>br.edu.ifsul.modelo.Compra</class>
+    <class>br.edu.ifsul.modelo.CompraItem</class>
+    <class>br.edu.ifsul.modelo.Endereco</class>
+    <class>br.edu.ifsul.modelo.Estado</class>
+    <class>br.edu.ifsul.modelo.Foto</class>
+    <class>br.edu.ifsul.modelo.Marca</class>
+    <class>br.edu.ifsul.modelo.Pais</class>
+    <class>br.edu.ifsul.modelo.Parcela</class>
+    <class>br.edu.ifsul.modelo.Permissao</class>
+    <class>br.edu.ifsul.modelo.Pessoa</class>
+    <class>br.edu.ifsul.modelo.PessoaFisica</class>
+    <class>br.edu.ifsul.modelo.PessoaJuridica</class>
+    <class>br.edu.ifsul.modelo.Produto</class>
+    <class>br.edu.ifsul.modelo.TipoEndereco</class>
+    <class>br.edu.ifsul.modelo.Venda</class>
+    <class>br.edu.ifsul.modelo.VendaItens</class>    
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="hibernate.transaction.jta.platform" 
+                value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
+      <property name="hibernate.classloading.use_current_tccl_as_parent" value="false"/>
+    </properties>
+  </persistence-unit>
+</persistence>
